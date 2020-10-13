@@ -1,0 +1,6 @@
+framework module Pods_TheBusyShop {
+  umbrella header "Pods-TheBusyShop-umbrella.h"
+
+  export *
+  module * { export * }
+}

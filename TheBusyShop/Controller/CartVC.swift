@@ -7,32 +7,121 @@
 //
 
 import Foundation
-
+import SDWebImage
 import UIKit
 
 class CartVC: UIViewController {
   
   // MARK: - Properties
+  public var itemsInCartArray1 = [BarcodeMeta]()
+  let scannerVC = ScannerVC()
   
-  //var delegate: HomeControllerDelegate?
+  var arry: [BarcodeMeta] = []
+  var updatedCartItems: [Any] = []
+  
+  var barcode: BarcodeMeta? {
+    didSet{ setupFruitImage() }
+  }
+  
+  //  private var codes = [BarcodeMeta]() {
+  //    didSet { cartTableView.reloadData() }
+  //  }
+  
+  struct Cell {
+    static let cartCell = "cartCell"
+  }
+  
+  private let cartTableView: UITableView = {
+    let tv = UITableView()
+    tv.translatesAutoresizingMaskIntoConstraints = false
+    return tv
+  }()
   
   // MARK: - Init
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+    title = "Cart"
     view.backgroundColor = .white
-    configureNavBar()
+    setupView()
+    
+    let checkoutButtonItem = UIBarButtonItem(title: "Checkout", style: .plain, target: self, action: #selector(checkoutButtonPressed))
+    self.navigationItem.rightBarButtonItem  = checkoutButtonItem
+  }
+  
+  @objc func checkoutButtonPressed() {
+    let vc = CheckOutVC()
+    vc.checkoutOrder = arry
+    navigationController?.pushViewController(vc, animated: true)
   }
   
   // MARK: - Handlers
   
-  func configureNavBar() {
-    navigationController?.navigationBar.barTintColor = .yellow
-    navigationController?.navigationBar.isTranslucent = false
-    navigationController?.navigationBar.barStyle = .default
-    navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
-    navigationController?.navigationBar.tintColor = .white
-    navigationItem.title = Controller.Cart
+  func setupView() {
+    
+    let crossReference = Dictionary(grouping: arry, by: { $0.uid })
+    let duplicates = crossReference
+      .filter { $1.count > 1 }                 // filter down to only those with multiple uids
+      .sorted { $0.1.count > $1.1.count }
+    
+    
+    cartTableView.dataSource = self
+    cartTableView.delegate = self
+    cartTableView.rowHeight = 100
+    cartTableView.register(CartCell.self, forCellReuseIdentifier: Cell.cartCell)
+    
+    view.addSubview(cartTableView)
+    NSLayoutConstraint.activate([
+      cartTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+      cartTableView.topAnchor.constraint(equalTo: view.topAnchor),
+      cartTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+      cartTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+    ])
+  }
+  
+  func setupFruitImage() {
+    guard let barcode = barcode else { return }
+    
+    let fruitImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
+    fruitImageView.backgroundColor = .blue
+    fruitImageView.layer.cornerRadius = 60 / 2
+    
+    guard let fruitImageUrl = URL(string: barcode.image) else { return }
+    fruitImageView.sd_setImage(with: fruitImageUrl, completed: nil)
+  }
+}
+
+extension CartVC: UITableViewDelegate, UITableViewDataSource {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return arry.count
+  }
+  
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = cartTableView.dequeueReusableCell(withIdentifier: Cell.cartCell) as! CartCell
+    cell.code = arry[indexPath.row]
+    return cell
+  }
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    showProductDescription(item: arry[indexPath.row])
+  }
+  
+  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    if editingStyle == .delete {
+      arry.remove(at: indexPath.row)
+      tableView.deleteRows(at: [indexPath], with: .fade)
+    } else if editingStyle == .insert {
+      arry.insert(arry[indexPath.row], at: indexPath.row)
+      // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+    }
+    
+    cartTableView.reloadData()
+  }
+  
+  func showProductDescription(item: BarcodeMeta) {
+    let vc = ProductVC()
+    vc.item.removeAll()
+    vc.item.append(item)
+    navigationController?.pushViewController(vc, animated: true)
   }
 }

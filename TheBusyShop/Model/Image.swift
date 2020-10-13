@@ -11,4 +11,5 @@ import UIKit
 struct Image {
   static let Scan = UIImage(named: "scan") ?? UIImage()
   static let Cart = UIImage(named: "cart") ?? UIImage()
+  static let Banana = UIImage(named: "banana") ?? UIImage()
 }

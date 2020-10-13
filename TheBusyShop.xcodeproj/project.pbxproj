@@ -3,23 +3,29 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B022421252EFBF100DD86FF /* BarcodeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B022420252EFBF100DD86FF /* BarcodeService.swift */; };
+		2B031ACD2533403B00CA7D82 /* Code.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B031ACC2533403B00CA7D82 /* Code.swift */; };
+		2B031AD1253487F000CA7D82 /* ProductVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B031AD0253487F000CA7D82 /* ProductVC.swift */; };
+		2B031AD32534A1A400CA7D82 /* CheckOutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B031AD22534A1A400CA7D82 /* CheckOutVC.swift */; };
+		2B031AD52534A22E00CA7D82 /* OrderSummaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B031AD42534A22E00CA7D82 /* OrderSummaryVC.swift */; };
 		2B048FBA2523B5B00006FCC6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B048FB92523B5B00006FCC6 /* AppDelegate.swift */; };
 		2B048FBC2523B5B00006FCC6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B048FBB2523B5B00006FCC6 /* SceneDelegate.swift */; };
-		2B048FBE2523B5B00006FCC6 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B048FBD2523B5B00006FCC6 /* FirstViewController.swift */; };
-		2B048FC02523B5B00006FCC6 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B048FBF2523B5B00006FCC6 /* SecondViewController.swift */; };
 		2B048FC52523B5B10006FCC6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B048FC42523B5B10006FCC6 /* Assets.xcassets */; };
 		2B048FC82523B5B10006FCC6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B048FC62523B5B10006FCC6 /* LaunchScreen.storyboard */; };
 		2B048FD32523B5B20006FCC6 /* TheBusyShopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B048FD22523B5B20006FCC6 /* TheBusyShopTests.swift */; };
-		2B048FE12523B8030006FCC6 /* ScanVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B048FE02523B8030006FCC6 /* ScanVC.swift */; };
-		2B048FE32523BBE40006FCC6 /* TabBarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B048FE22523BBE40006FCC6 /* TabBarItems.swift */; };
-		2B048FE52523BD2A0006FCC6 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B048FE42523BD2A0006FCC6 /* TabBarController.swift */; };
 		2B048FE72523BE4E0006FCC6 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B048FE62523BE4E0006FCC6 /* Image.swift */; };
 		2B048FE92523C4C50006FCC6 /* CartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B048FE82523C4C50006FCC6 /* CartVC.swift */; };
-		2BC42ED82525F50500FEE96F /* Scanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC42ED72525F50500FEE96F /* Scanner.swift */; };
+		2B0F0BB2252F0A5600211429 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0F0BB1252F0A5600211429 /* Constants.swift */; };
+		2B0F0BB4252F148500211429 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0F0BB3252F148500211429 /* AuthService.swift */; };
+		2BB508BB25289B9B009CDDE7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2BB508BA25289B9B009CDDE7 /* GoogleService-Info.plist */; };
+		2BB508BD2528A7D3009CDDE7 /* Barcodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB508BC2528A7D3009CDDE7 /* Barcodes.swift */; };
+		2BC42ED82525F50500FEE96F /* ScannerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC42ED72525F50500FEE96F /* ScannerVC.swift */; };
+		2BF630CE25360F6300A792C4 /* CartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B02241D252DEAAA00DD86FF /* CartCell.swift */; };
+		30E0573146F179E8B8CE9494 /* Pods_TheBusyShop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F01AD12970C944210EA3455 /* Pods_TheBusyShop.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,23 +39,31 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		07BECFA934F95BA1FF011D1B /* Pods-TheBusyShop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheBusyShop.debug.xcconfig"; path = "Target Support Files/Pods-TheBusyShop/Pods-TheBusyShop.debug.xcconfig"; sourceTree = "<group>"; };
+		2B02241D252DEAAA00DD86FF /* CartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCell.swift; sourceTree = "<group>"; };
+		2B022420252EFBF100DD86FF /* BarcodeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeService.swift; sourceTree = "<group>"; };
+		2B031ACC2533403B00CA7D82 /* Code.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Code.swift; sourceTree = "<group>"; };
+		2B031AD0253487F000CA7D82 /* ProductVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductVC.swift; sourceTree = "<group>"; };
+		2B031AD22534A1A400CA7D82 /* CheckOutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckOutVC.swift; sourceTree = "<group>"; };
+		2B031AD42534A22E00CA7D82 /* OrderSummaryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSummaryVC.swift; sourceTree = "<group>"; };
 		2B048FB62523B5B00006FCC6 /* TheBusyShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheBusyShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B048FB92523B5B00006FCC6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2B048FBB2523B5B00006FCC6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2B048FBD2523B5B00006FCC6 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		2B048FBF2523B5B00006FCC6 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		2B048FC42523B5B10006FCC6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2B048FC72523B5B10006FCC6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2B048FC92523B5B10006FCC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B048FCE2523B5B20006FCC6 /* TheBusyShopTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TheBusyShopTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B048FD22523B5B20006FCC6 /* TheBusyShopTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheBusyShopTests.swift; sourceTree = "<group>"; };
 		2B048FD42523B5B20006FCC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2B048FE02523B8030006FCC6 /* ScanVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanVC.swift; sourceTree = "<group>"; };
-		2B048FE22523BBE40006FCC6 /* TabBarItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItems.swift; sourceTree = "<group>"; };
-		2B048FE42523BD2A0006FCC6 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		2B048FE62523BE4E0006FCC6 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		2B048FE82523C4C50006FCC6 /* CartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartVC.swift; sourceTree = "<group>"; };
-		2BC42ED72525F50500FEE96F /* Scanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scanner.swift; sourceTree = "<group>"; };
+		2B0F0BB1252F0A5600211429 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		2B0F0BB3252F148500211429 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		2BB508BA25289B9B009CDDE7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2BB508BC2528A7D3009CDDE7 /* Barcodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Barcodes.swift; sourceTree = "<group>"; };
+		2BC42ED72525F50500FEE96F /* ScannerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerVC.swift; sourceTree = "<group>"; };
+		8F01AD12970C944210EA3455 /* Pods_TheBusyShop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheBusyShop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F42C98CF45D7AC4474A58AAF /* Pods-TheBusyShop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheBusyShop.release.xcconfig"; path = "Target Support Files/Pods-TheBusyShop/Pods-TheBusyShop.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30E0573146F179E8B8CE9494 /* Pods_TheBusyShop.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,12 +85,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		265512FC4D7C4998E94C887C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				07BECFA934F95BA1FF011D1B /* Pods-TheBusyShop.debug.xcconfig */,
+				F42C98CF45D7AC4474A58AAF /* Pods-TheBusyShop.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		2B02241F252EFBE300DD86FF /* API */ = {
+			isa = PBXGroup;
+			children = (
+				2B0F0BB3252F148500211429 /* AuthService.swift */,
+				2B022420252EFBF100DD86FF /* BarcodeService.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		2B048FAD2523B5AF0006FCC6 = {
 			isa = PBXGroup;
 			children = (
 				2B048FB82523B5B00006FCC6 /* TheBusyShop */,
 				2B048FD12523B5B20006FCC6 /* TheBusyShopTests */,
 				2B048FB72523B5B00006FCC6 /* Products */,
+				265512FC4D7C4998E94C887C /* Pods */,
+				8DDC85DB0AC6C837B51F22C4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -91,16 +126,17 @@
 		2B048FB82523B5B00006FCC6 /* TheBusyShop */ = {
 			isa = PBXGroup;
 			children = (
+				2B0F0BB0252F0A4B00211429 /* Utils */,
+				2B02241F252EFBE300DD86FF /* API */,
 				2B048FDD2523B69B0006FCC6 /* Model */,
 				2B048FDE2523B6A30006FCC6 /* View */,
 				2B048FDF2523B6AB0006FCC6 /* Controller */,
 				2B048FB92523B5B00006FCC6 /* AppDelegate.swift */,
 				2B048FBB2523B5B00006FCC6 /* SceneDelegate.swift */,
-				2B048FBD2523B5B00006FCC6 /* FirstViewController.swift */,
-				2B048FBF2523B5B00006FCC6 /* SecondViewController.swift */,
 				2B048FC42523B5B10006FCC6 /* Assets.xcassets */,
 				2B048FC62523B5B10006FCC6 /* LaunchScreen.storyboard */,
 				2B048FC92523B5B10006FCC6 /* Info.plist */,
+				2BB508BA25289B9B009CDDE7 /* GoogleService-Info.plist */,
 			);
 			path = TheBusyShop;
 			sourceTree = "<group>";
@@ -117,8 +153,9 @@
 		2B048FDD2523B69B0006FCC6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				2B048FE22523BBE40006FCC6 /* TabBarItems.swift */,
 				2B048FE62523BE4E0006FCC6 /* Image.swift */,
+				2BB508BC2528A7D3009CDDE7 /* Barcodes.swift */,
+				2B031ACC2533403B00CA7D82 /* Code.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -126,6 +163,7 @@
 		2B048FDE2523B6A30006FCC6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2B02241D252DEAAA00DD86FF /* CartCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -133,12 +171,29 @@
 		2B048FDF2523B6AB0006FCC6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				2B048FE02523B8030006FCC6 /* ScanVC.swift */,
+				2BC42ED72525F50500FEE96F /* ScannerVC.swift */,
 				2B048FE82523C4C50006FCC6 /* CartVC.swift */,
-				2B048FE42523BD2A0006FCC6 /* TabBarController.swift */,
-				2BC42ED72525F50500FEE96F /* Scanner.swift */,
+				2B031AD0253487F000CA7D82 /* ProductVC.swift */,
+				2B031AD22534A1A400CA7D82 /* CheckOutVC.swift */,
+				2B031AD42534A22E00CA7D82 /* OrderSummaryVC.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		2B0F0BB0252F0A4B00211429 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				2B0F0BB1252F0A5600211429 /* Constants.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		8DDC85DB0AC6C837B51F22C4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8F01AD12970C944210EA3455 /* Pods_TheBusyShop.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,9 +203,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2B048FD72523B5B20006FCC6 /* Build configuration list for PBXNativeTarget "TheBusyShop" */;
 			buildPhases = (
+				FD6D7944CA2A46ABC55C0229 /* [CP] Check Pods Manifest.lock */,
 				2B048FB22523B5AF0006FCC6 /* Sources */,
 				2B048FB32523B5AF0006FCC6 /* Frameworks */,
 				2B048FB42523B5AF0006FCC6 /* Resources */,
+				5DBBFB1D462F40FDE06C64E1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -224,6 +281,7 @@
 			files = (
 				2B048FC82523B5B10006FCC6 /* LaunchScreen.storyboard in Resources */,
 				2B048FC52523B5B10006FCC6 /* Assets.xcassets in Resources */,
+				2BB508BB25289B9B009CDDE7 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,21 +294,67 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5DBBFB1D462F40FDE06C64E1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TheBusyShop/Pods-TheBusyShop-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TheBusyShop/Pods-TheBusyShop-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TheBusyShop/Pods-TheBusyShop-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FD6D7944CA2A46ABC55C0229 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TheBusyShop-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2B048FB22523B5AF0006FCC6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B048FC02523B5B00006FCC6 /* SecondViewController.swift in Sources */,
+				2B0F0BB2252F0A5600211429 /* Constants.swift in Sources */,
+				2B031ACD2533403B00CA7D82 /* Code.swift in Sources */,
+				2BF630CE25360F6300A792C4 /* CartCell.swift in Sources */,
+				2B0F0BB4252F148500211429 /* AuthService.swift in Sources */,
 				2B048FE72523BE4E0006FCC6 /* Image.swift in Sources */,
-				2B048FE12523B8030006FCC6 /* ScanVC.swift in Sources */,
-				2B048FE52523BD2A0006FCC6 /* TabBarController.swift in Sources */,
-				2B048FE32523BBE40006FCC6 /* TabBarItems.swift in Sources */,
+				2B031AD32534A1A400CA7D82 /* CheckOutVC.swift in Sources */,
 				2B048FE92523C4C50006FCC6 /* CartVC.swift in Sources */,
-				2B048FBE2523B5B00006FCC6 /* FirstViewController.swift in Sources */,
+				2B031AD52534A22E00CA7D82 /* OrderSummaryVC.swift in Sources */,
+				2B022421252EFBF100DD86FF /* BarcodeService.swift in Sources */,
 				2B048FBA2523B5B00006FCC6 /* AppDelegate.swift in Sources */,
-				2BC42ED82525F50500FEE96F /* Scanner.swift in Sources */,
+				2BC42ED82525F50500FEE96F /* ScannerVC.swift in Sources */,
+				2B031AD1253487F000CA7D82 /* ProductVC.swift in Sources */,
 				2B048FBC2523B5B00006FCC6 /* SceneDelegate.swift in Sources */,
+				2BB508BD2528A7D3009CDDE7 /* Barcodes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,13 +438,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -388,18 +493,20 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 4.2;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		2B048FD82523B5B20006FCC6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 07BECFA934F95BA1FF011D1B /* Pods-TheBusyShop.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -410,15 +517,16 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.antoniesander.TheBusyShop;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ikhokha.techcheck;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		2B048FD92523B5B20006FCC6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F42C98CF45D7AC4474A58AAF /* Pods-TheBusyShop.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -429,10 +537,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.antoniesander.TheBusyShop;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ikhokha.techcheck;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -444,7 +552,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J5987KCXN8;
 				INFOPLIST_FILE = TheBusyShopTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -466,7 +574,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J5987KCXN8;
 				INFOPLIST_FILE = TheBusyShopTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
