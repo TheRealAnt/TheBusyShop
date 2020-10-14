@@ -126,6 +126,7 @@
 		2B048FB82523B5B00006FCC6 /* TheBusyShop */ = {
 			isa = PBXGroup;
 			children = (
+				2B048FC42523B5B10006FCC6 /* Assets.xcassets */,
 				2B0F0BB0252F0A4B00211429 /* Utils */,
 				2B02241F252EFBE300DD86FF /* API */,
 				2B048FDD2523B69B0006FCC6 /* Model */,
@@ -133,7 +134,6 @@
 				2B048FDF2523B6AB0006FCC6 /* Controller */,
 				2B048FB92523B5B00006FCC6 /* AppDelegate.swift */,
 				2B048FBB2523B5B00006FCC6 /* SceneDelegate.swift */,
-				2B048FC42523B5B10006FCC6 /* Assets.xcassets */,
 				2B048FC62523B5B10006FCC6 /* LaunchScreen.storyboard */,
 				2B048FC92523B5B10006FCC6 /* Info.plist */,
 				2BB508BA25289B9B009CDDE7 /* GoogleService-Info.plist */,
