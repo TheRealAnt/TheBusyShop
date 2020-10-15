@@ -26,8 +26,8 @@ struct AuthService {
     let email = credentials.email
     let password = credentials.password
     
-    let filename = NSUUID().uuidString
-    STORAGE_PROFILE_IMAGES.child(filename)
+//    let filename = NSUUID().uuidString
+//    STORAGE_PROFILE_IMAGES.child(filename)
     
     
     Auth.auth().signIn(withEmail: email, password: password) { (result, error) in

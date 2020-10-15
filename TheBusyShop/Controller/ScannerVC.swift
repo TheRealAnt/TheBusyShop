@@ -14,11 +14,11 @@ import Firebase
 class ScannerVC: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     
     //MARK:- Properties
-    private var codesFromAPI = [BarcodeMeta]()
-    public var barcodeData = [BarcodeMeta]()
-    public var newBarcodesCount = [BarcodeMeta]()
-    public var barcodeDataForCart = [BarcodeMeta]()
-    public var barcodeCountForCart = [Any]()
+    private var codesFromAPI = [BarcodeMeta]() // holds all barcodes keys and values from API.
+    private var barcodeData = [BarcodeMeta]() // holds every item a user scanned, unfiltered.
+    public var newBarcodesCount = [BarcodeMeta]() // holds filtered barcodes with itemCount.
+    public var barcodeDataForCart = [BarcodeMeta]() //holds filtered barcodes to use in cartVC.
+    private var barcodeCountForCart = [Int]() // holds only itemCount numbers.
     
     private var previewView: UIView!
     var captureSession: AVCaptureSession!
@@ -166,19 +166,24 @@ class ScannerVC: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
             if(barcode.elementsEqual(data.uid)){
                 // 2. find matching uids by comparing user scanned codes to codesFromAPI uids.
                 let duplicateBarcode = barcodeData.filter { $0.uid == data.uid }.count + 1
+                
                 print("DEBUG: ", barcodeCountForCart, barcodeDataForCart)
                 // 3. If the duplicate count is 1, we just add to the array we want to send to the cartVC.
+                
                 if (duplicateBarcode == 1) {
                     newBarcodesCount.append(data)
                     barcodeCountForCart.append(duplicateBarcode)
                     barcodeDataForCart.append(data)
-                    print("DEBUG: count for each fuit duplicate: ", barcodeCountForCart)
+                    newBarcodesCount[barcodeDataForCart.firstIndex(of: data)!].itemCount = duplicateBarcode
+                    print("DEBUG: count for each fruit duplicate: ", barcodeCountForCart)
+                    
                 } else {
                     //4. Update the barcodeCountForCart array index number by +1, and set the new number at the same index.
                     barcodeCountForCart[barcodeDataForCart.firstIndex(of: data)!] = duplicateBarcode
                     barcodeDataForCart[barcodeDataForCart.firstIndex(of: data)!] = data
                     // 5. newBarcodesCount array is used to update the itemsCount for each product.
                     newBarcodesCount[barcodeDataForCart.firstIndex(of: data)!].itemCount = duplicateBarcode
+                    newBarcodesCount[barcodeDataForCart.firstIndex(of: data)!].price += newBarcodesCount[barcodeDataForCart.firstIndex(of: data)!].price
                 }
                 barcodeData.append(data)
             }

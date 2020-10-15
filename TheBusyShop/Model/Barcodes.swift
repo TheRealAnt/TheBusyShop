@@ -29,7 +29,7 @@ struct Barcode {
 struct BarcodeMeta: Hashable {
   let description: String
   let image: String
-  let price: Double
+  var price: Double
   let uid: String
   var itemCount: Int
   
