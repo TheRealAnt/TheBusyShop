@@ -111,6 +111,6 @@ class CartCell: UITableViewCell {
         }
         barcodeItemCount.text = String("x\(code.itemCount)")
         barcodeDescriptionLabel.text = code.description
-        barcodePriceLabel.text = String(format: "%.1f", code.price)
+        barcodePriceLabel.text = "R\(String(format: "%.1f", code.price))"
     }
 }

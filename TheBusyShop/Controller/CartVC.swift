@@ -16,8 +16,8 @@ class CartVC: UIViewController {
     public var itemsInCartArray1 = [BarcodeMeta]()
     let scannerVC = ScannerVC()
     
-    var arry = [BarcodeMeta]()
-    var updatedCartItems: [Any] = []
+    var cartVCBarcodeItems = [BarcodeMeta]()
+    //var updatedCartItems: [Any] = []
     
     var barcode: BarcodeMeta? {
         didSet{ setupFruitImage() }
@@ -51,7 +51,7 @@ class CartVC: UIViewController {
     
     @objc func checkoutButtonPressed() {
         let vc = CheckOutVC()
-        vc.checkoutOrder = arry
+        vc.checkoutOrder = cartVCBarcodeItems
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -86,31 +86,25 @@ class CartVC: UIViewController {
 
 extension CartVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arry.count
+        return cartVCBarcodeItems.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = cartTableView.dequeueReusableCell(withIdentifier: Cell.cartCell) as! CartCell
-        cell.code = arry[indexPath.row]
+        cell.code = cartVCBarcodeItems[indexPath.row]
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        showProductDescription(item: arry[indexPath.row])
-    }
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if (tableView.cellForRow(at: indexPath) != nil) {
-            
-        }
+        showProductDescription(item: cartVCBarcodeItems[indexPath.row])
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            arry.remove(at: indexPath.row)
+            cartVCBarcodeItems.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
-            arry.insert(arry[indexPath.row], at: indexPath.row)
+            cartVCBarcodeItems.insert(cartVCBarcodeItems[indexPath.row], at: indexPath.row)
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
         cartTableView.reloadData()
