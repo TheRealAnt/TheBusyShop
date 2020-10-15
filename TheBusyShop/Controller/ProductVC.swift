@@ -15,12 +15,16 @@ class ProductVC: UIViewController {
     
     var item = [BarcodeMeta]()
     
+    var barcode: BarcodeMeta? {
+        didSet{ setupFruitImage() }
+    }
+    
     let fruitImageView:UIImageView = {
         let img = UIImageView(frame: .zero)
         img.backgroundColor = .lightGray
         img.contentMode = .scaleAspectFill
         img.translatesAutoresizingMaskIntoConstraints = false
-        img.layer.cornerRadius = 30
+        img.layer.cornerRadius = 200/2
         img.clipsToBounds = true
         return img
     }()
@@ -43,24 +47,27 @@ class ProductVC: UIViewController {
         return label
     }()
     
-    func setupFruitImage() {
-        for fruit in item {
-            imageUrl = fruit.image
-            barcodeDescriptionLabel.text = fruit.description
-            title = "Information of \(fruit.description)"
-            barcodePriceLabel.text = "Price: \(fruit.price)"
+    private func setupFruitImage() {
+        let fruitItem = item[0]
+        let storageRef = STORAGE.reference(withPath: fruitItem.image)
+        storageRef.downloadURL { (url, error) in
+            guard let url = url else { return }
+            self.fruitImageView.sd_setImage(with: url, completed: nil)
         }
+        barcodeDescriptionLabel.text = fruitItem.description
+        barcodePriceLabel.text = "R\(String(format: "%.1f", fruitItem.price))"
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Product Details"
         view.backgroundColor = .white
         setupFruitImage()
         self.view.addSubview(fruitImageView)
         NSLayoutConstraint.activate([
             fruitImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
-            fruitImageView.widthAnchor.constraint(equalToConstant: 150),
-            fruitImageView.heightAnchor.constraint(equalToConstant: 150),
+            fruitImageView.widthAnchor.constraint(equalToConstant: 200),
+            fruitImageView.heightAnchor.constraint(equalToConstant: 200),
             fruitImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
         

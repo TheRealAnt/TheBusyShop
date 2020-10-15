@@ -76,7 +76,6 @@ class CartVC: UIViewController {
         guard let barcode = barcode else { return }
         
         let fruitImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
-        fruitImageView.backgroundColor = .blue
         fruitImageView.layer.cornerRadius = 60 / 2
         
         guard let fruitImageUrl = URL(string: barcode.image) else { return }
@@ -111,9 +110,9 @@ extension CartVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func showProductDescription(item: BarcodeMeta) {
-        let vc = ProductVC()
-        vc.item.removeAll()
-        vc.item.append(item)
-        navigationController?.pushViewController(vc, animated: true)
+        let productVC = ProductVC()
+        productVC.item.removeAll()
+        productVC.item.append(item)
+        navigationController?.pushViewController(productVC, animated: true)
     }
 }
