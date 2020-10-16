@@ -174,7 +174,7 @@ class ScannerVC: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                     newBarcodesCount.append(data)
                     barcodeCountForCart.append(duplicateBarcode)
                     barcodeDataForCart.append(data)
-                    guard let itemIndex = barcodeDataForCart.firstIndex(of: data) else { return } //holding index of the matching items.
+                    guard let itemIndex = barcodeDataForCart.firstIndex(of: data) else { return } //holding index of the matching items, so it's the same index positioning set in all our other created arrays we created and are using.
                     newBarcodesCount[itemIndex].itemCount = duplicateBarcode
                     //print("DEBUG: count for each fruit duplicate: ", barcodeCountForCart)
                     

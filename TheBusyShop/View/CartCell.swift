@@ -12,7 +12,6 @@ import Firebase
 import SDWebImage
 
 class CartCell: UITableViewCell {
-    let scanner = ScannerVC()
     
     var code: BarcodeMeta? {
         didSet { setup() }
@@ -86,7 +85,6 @@ class CartCell: UITableViewCell {
         NSLayoutConstraint.activate([
             barcodeDescriptionLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             barcodeDescriptionLabel.leadingAnchor.constraint(equalTo: barcodeImageView.trailingAnchor, constant: 10),
-            //barcodeDescriptionLabel.trailingAnchor.constraint(equalTo: barcodeItemCount.leadingAnchor, constant: -10)
         ])
         
         addSubview(barcodeItemCount)

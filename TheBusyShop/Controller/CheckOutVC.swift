@@ -28,7 +28,7 @@ class CheckOutVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Checkout"
+        title = "Order Summary"
         view.backgroundColor = .white
         setupView()
         

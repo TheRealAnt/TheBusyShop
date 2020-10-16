@@ -31,7 +31,7 @@ class CartVC: UIViewController {
         static let cartCell = "cartCell"
     }
     
-    private let cartTableView: UITableView = {
+    let cartTableView: UITableView = {
         let tv = UITableView()
         tv.translatesAutoresizingMaskIntoConstraints = false
         return tv
@@ -50,9 +50,10 @@ class CartVC: UIViewController {
     }
     
     @objc func checkoutButtonPressed() {
-        let vc = CheckOutVC()
-        vc.checkoutOrder = cartVCBarcodeItems
-        navigationController?.pushViewController(vc, animated: true)
+        let vc = OrderSummaryVC()
+        vc.incomingOrder = cartVCBarcodeItems
+        navigationController?.present(vc, animated: true, completion: nil)
+        //navigationController?.pushViewController(vc, animated: true)
     }
     
     // MARK: - Handlers
