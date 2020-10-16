@@ -29,7 +29,8 @@ class OrderSummaryVC: UIViewController {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Order Summary"
-        label.font = .systemFont(ofSize: 14, weight: .bold)
+        label.font = .preferredFont(for: .title3, weight: .bold)
+        label.adjustsFontForContentSizeCategory = true
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -37,7 +38,6 @@ class OrderSummaryVC: UIViewController {
     
     private lazy var checkOutButton: UIButton = {
         let button = UIButton(frame: .zero)
-        //button.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
         button.layer.cornerRadius = 8
         button.contentEdgeInsets = UIEdgeInsets(top: 10,left: 10,bottom: 10,right: 10)
         button.backgroundColor = UIColor.init(red: 46/255, green: 204/255, blue: 113/255, alpha: 0.8)

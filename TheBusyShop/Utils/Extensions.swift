@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 // MARK:- Get the app name
 extension Bundle {
@@ -36,5 +37,15 @@ extension String {
     func getAppName() -> String {
         guard let appName = Bundle.main.displayName else { return "App name could not be loaded :("}
         return appName
+    }
+}
+
+extension UIFont {
+    //MARK:- Dynamic Fonts
+    static func preferredFont(for style: TextStyle, weight: Weight) -> UIFont {
+        let metrics = UIFontMetrics(forTextStyle: style)
+        let desc = UIFontDescriptor.preferredFontDescriptor(withTextStyle: style)
+        let font = UIFont.systemFont(ofSize: desc.pointSize, weight: weight)
+        return metrics.scaledFont(for: font)
     }
 }

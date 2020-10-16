@@ -14,7 +14,7 @@ import Firebase
 class ScannerVC: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     
     //MARK:- Properties
-    private var codesFromAPI = [BarcodeMeta]() // holds all barcodes keys and values from API.
+    public var codesFromAPI = [BarcodeMeta]() // holds all barcodes keys and values from API.
     private var barcodeData = [BarcodeMeta]() // holds every item a user scanned, unfiltered.
     public var newBarcodesCount = [BarcodeMeta]() // holds filtered barcodes with itemCount.
     public var barcodeDataForCart = [BarcodeMeta]() //holds filtered barcodes to use in cartVC.
@@ -40,6 +40,7 @@ class ScannerVC: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     @objc func cartButtonPressed() {
         let vc = CartVC()
         vc.cartVCBarcodeItems = newBarcodesCount //passing the customized array to our cartVC
+        vc.cartVCBarcodeItemsPrices = barcodeDataForCart
         navigationController?.pushViewController(vc, animated: true)
     }
     

@@ -13,11 +13,8 @@ import UIKit
 class CartVC: UIViewController {
     
     // MARK: - Properties
-    public var itemsInCartArray1 = [BarcodeMeta]()
-    let scannerVC = ScannerVC()
-    
     var cartVCBarcodeItems = [BarcodeMeta]()
-    //var updatedCartItems: [Any] = []
+    var cartVCBarcodeItemsPrices = [BarcodeMeta]()
     
     var barcode: BarcodeMeta? {
         didSet{ setupFruitImage() }
@@ -101,13 +98,19 @@ extension CartVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            cartVCBarcodeItems.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            cartVCBarcodeItems[indexPath.row].itemCount = cartVCBarcodeItems[indexPath.row].itemCount - 1
+            cartVCBarcodeItems[indexPath.row].price = cartVCBarcodeItems[indexPath.row].price - cartVCBarcodeItemsPrices[indexPath.row].price
+            
+            if (cartVCBarcodeItems[indexPath.row].itemCount == 0) {
+                cartVCBarcodeItems.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
         } else if editingStyle == .insert {
             cartVCBarcodeItems.insert(cartVCBarcodeItems[indexPath.row], at: indexPath.row)
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
         cartTableView.reloadData()
+        print(cartVCBarcodeItems)
     }
     
     func showProductDescription(item: BarcodeMeta) {
