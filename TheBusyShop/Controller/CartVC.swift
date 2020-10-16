@@ -82,6 +82,11 @@ class CartVC: UIViewController {
 }
 
 extension CartVC: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cartVCBarcodeItems.count
     }
@@ -96,21 +101,27 @@ extension CartVC: UITableViewDelegate, UITableViewDataSource {
         showProductDescription(item: cartVCBarcodeItems[indexPath.row])
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            cartVCBarcodeItems[indexPath.row].itemCount = cartVCBarcodeItems[indexPath.row].itemCount - 1
-            cartVCBarcodeItems[indexPath.row].price = cartVCBarcodeItems[indexPath.row].price - cartVCBarcodeItemsPrices[indexPath.row].price
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let contextItem = UIContextualAction(style: .destructive, title: "Insert") {  (contextualAction, view, boolValue) in
+            self.cartVCBarcodeItems[indexPath.row].itemCount = self.cartVCBarcodeItems[indexPath.row].itemCount + 1
+            self.cartVCBarcodeItems[indexPath.row].price = self.cartVCBarcodeItems[indexPath.row].price + self.cartVCBarcodeItemsPrices[indexPath.row].price
+            self.cartTableView.reloadData()
+        }
+        return UISwipeActionsConfiguration(actions: [contextItem])
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let contextItem = UIContextualAction(style: .destructive, title: "Delete") {  (contextualAction, view, boolValue) in
+            self.cartVCBarcodeItems[indexPath.row].itemCount = self.cartVCBarcodeItems[indexPath.row].itemCount - 1
+            self.cartVCBarcodeItems[indexPath.row].price = self.cartVCBarcodeItems[indexPath.row].price - self.cartVCBarcodeItemsPrices[indexPath.row].price
             
-            if (cartVCBarcodeItems[indexPath.row].itemCount == 0) {
-                cartVCBarcodeItems.remove(at: indexPath.row)
+            if (self.cartVCBarcodeItems[indexPath.row].itemCount == 0) {
+                self.cartVCBarcodeItems.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .fade)
             }
-        } else if editingStyle == .insert {
-            cartVCBarcodeItems.insert(cartVCBarcodeItems[indexPath.row], at: indexPath.row)
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+            self.cartTableView.reloadData()
         }
-        cartTableView.reloadData()
-        print(cartVCBarcodeItems)
+        return UISwipeActionsConfiguration(actions: [contextItem])
     }
     
     func showProductDescription(item: BarcodeMeta) {
