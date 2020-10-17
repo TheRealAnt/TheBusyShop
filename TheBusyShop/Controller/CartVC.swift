@@ -102,18 +102,19 @@ extension CartVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let contextItem = UIContextualAction(style: .destructive, title: "Insert") {  (contextualAction, view, boolValue) in
-            self.cartVCBarcodeItems[indexPath.row].itemCount = self.cartVCBarcodeItems[indexPath.row].itemCount + 1
-            self.cartVCBarcodeItems[indexPath.row].price = self.cartVCBarcodeItems[indexPath.row].price + self.cartVCBarcodeItemsPrices[indexPath.row].price
+        let contextItem = UIContextualAction(style: .normal, title: "Add 1") {  (contextualAction, view, boolValue) in
+            self.cartVCBarcodeItems[indexPath.row].itemCount += 1
+            self.cartVCBarcodeItems[indexPath.row].price += self.cartVCBarcodeItemsPrices[indexPath.row].price
             self.cartTableView.reloadData()
         }
+        contextItem.backgroundColor = .green
         return UISwipeActionsConfiguration(actions: [contextItem])
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let contextItem = UIContextualAction(style: .destructive, title: "Delete") {  (contextualAction, view, boolValue) in
-            self.cartVCBarcodeItems[indexPath.row].itemCount = self.cartVCBarcodeItems[indexPath.row].itemCount - 1
-            self.cartVCBarcodeItems[indexPath.row].price = self.cartVCBarcodeItems[indexPath.row].price - self.cartVCBarcodeItemsPrices[indexPath.row].price
+        let contextItem = UIContextualAction(style: .destructive, title: "Remove 1") {  (contextualAction, view, boolValue) in
+            self.cartVCBarcodeItems[indexPath.row].itemCount -= 1
+            self.cartVCBarcodeItems[indexPath.row].price -= self.cartVCBarcodeItemsPrices[indexPath.row].price
             
             if (self.cartVCBarcodeItems[indexPath.row].itemCount == 0) {
                 self.cartVCBarcodeItems.remove(at: indexPath.row)

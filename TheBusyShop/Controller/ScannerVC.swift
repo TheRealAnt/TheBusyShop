@@ -186,7 +186,7 @@ class ScannerVC: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                     barcodeDataForCart[itemIndex] = data
                     // 5. newBarcodesCount array is used to update the itemsCount for each product.
                     newBarcodesCount[itemIndex].itemCount = duplicateBarcode
-                    newBarcodesCount[itemIndex].price =  newBarcodesCount[itemIndex].price + barcodeDataForCart[itemIndex].price
+                    newBarcodesCount[itemIndex].price += barcodeDataForCart[itemIndex].price
                 }
                 barcodeData.append(data)
             }

@@ -19,6 +19,9 @@ class OrderSummaryVC: UIViewController {
     
     var incomingOrder = [BarcodeMeta]()
     
+    var totalItemsInCart = 0
+    var totalCostOfOrder = 0.0
+    
     private lazy var titleView: UIView = {
         let view = UIView(frame: .zero)
         view.backgroundColor = .yellow
@@ -36,6 +39,26 @@ class OrderSummaryVC: UIViewController {
         return label
     }()
     
+    private lazy var itemCountLabel: UILabel = {
+        let label = UILabel()
+        //label.text = "\(totalItemsInCart)"
+        label.font = .preferredFont(for: .body, weight: .bold)
+        label.adjustsFontForContentSizeCategory = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private lazy var totalLabel: UILabel = {
+        let label = UILabel()
+        //label.text = "R\(totalCostOfOrder)"
+        label.font = .preferredFont(for: .body, weight: .bold)
+        label.adjustsFontForContentSizeCategory = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    
+    
     private lazy var checkOutButton: UIButton = {
         let button = UIButton(frame: .zero)
         button.layer.cornerRadius = 8
@@ -49,6 +72,11 @@ class OrderSummaryVC: UIViewController {
         return button
     }()
     
+    private lazy var footerView: UIView = {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 100))
+        return view
+    }()
+    
     var orderSummaryTableView: UITableView = {
         let tv = UITableView()
         return tv
@@ -57,11 +85,47 @@ class OrderSummaryVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        
+        let calc = calculateTotalItemCountAndPrice()
+        
+        itemCountLabel.text = "x\(String(calc.0))"
+        totalLabel.text = "Total: R\(String(calc.1))"
+
         setupView()
     }
     
     @objc func checkoutButtonTapped(_: UIButton) {
-        print("checkoutButtonTapped")
+        shareRecieptButtonPressed()
+    }
+    
+    @objc func shareRecieptButtonPressed() {
+        let activityVC = UIActivityViewController(activityItems: [" \(createReciept())"], applicationActivities: nil)
+        present(activityVC, animated: true, completion: nil)
+    }
+    
+    func calculateTotalItemCountAndPrice() -> (Int, Double) {
+        
+        for item in incomingOrder {
+            totalItemsInCart += item.itemCount
+            totalCostOfOrder += item.price
+        }
+        return (totalItemsInCart, totalCostOfOrder)
+    }
+    
+    func createReciept() -> String {
+        
+        let appName = String().getAppName()
+        let dateAndTime = String().getCurrentDateAndTime()
+        
+        var reciept = "Thank you for shopping with \(appName)!\n\n"
+        reciept.append("Receipt for order on \(dateAndTime)\n --Order summary-- \n\n")
+        
+        for item in incomingOrder {
+            reciept.append("x\(item.itemCount)  \(item.description) R\(item.price)\n")
+        }
+        
+        reciept.append("\nYour total cost is R\(totalCostOfOrder)")
+        return reciept
     }
     
     private func setupView() {
@@ -95,10 +159,11 @@ class OrderSummaryVC: UIViewController {
         orderSummaryTableView = CartVC().cartTableView
         orderSummaryTableView.separatorStyle = .none
         orderSummaryTableView.rowHeight = 100
-        orderSummaryTableView.isUserInteractionEnabled = false
         orderSummaryTableView.delegate = self
         orderSummaryTableView.dataSource = self
         orderSummaryTableView.register(CartCell.self, forCellReuseIdentifier: Cell.orderSummary)
+        orderSummaryTableView.allowsSelection = false
+        orderSummaryTableView.tableFooterView = footerView
         
         view.addSubview(orderSummaryTableView)
         NSLayoutConstraint.activate([
@@ -106,6 +171,18 @@ class OrderSummaryVC: UIViewController {
             orderSummaryTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             orderSummaryTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             orderSummaryTableView.bottomAnchor.constraint(equalTo: checkOutButton.topAnchor)
+        ])
+        
+        footerView.addSubview(totalLabel)
+        NSLayoutConstraint.activate([
+            totalLabel.centerYAnchor.constraint(equalTo: footerView.centerYAnchor),
+            totalLabel.trailingAnchor.constraint(equalTo: footerView.trailingAnchor, constant: -10),
+        ])
+        
+        footerView.addSubview(itemCountLabel)
+        NSLayoutConstraint.activate([
+            itemCountLabel.centerYAnchor.constraint(equalTo: footerView.centerYAnchor),
+            itemCountLabel.trailingAnchor.constraint(equalTo: footerView.centerXAnchor, constant: 60)
         ])
     }
 }
