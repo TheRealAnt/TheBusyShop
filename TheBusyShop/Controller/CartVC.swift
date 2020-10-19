@@ -13,6 +13,7 @@ import UIKit
 class CartVC: UIViewController {
     
     // MARK: - Properties
+    var dismissView: (() -> Void)?
     var cartVCBarcodeItems = [BarcodeMeta]()
     var cartVCBarcodeItemsPrices = [BarcodeMeta]()
     
@@ -30,6 +31,7 @@ class CartVC: UIViewController {
     
     let cartTableView: UITableView = {
         let tv = UITableView()
+        tv.separatorStyle = .none
         tv.translatesAutoresizingMaskIntoConstraints = false
         return tv
     }()
@@ -44,17 +46,16 @@ class CartVC: UIViewController {
         
         let checkoutButtonItem = UIBarButtonItem(title: "Checkout", style: .plain, target: self, action: #selector(checkoutButtonPressed))
         self.navigationItem.rightBarButtonItem  = checkoutButtonItem
+        self.navigationController?.navigationBar.isTranslucent = false
     }
     
     @objc func checkoutButtonPressed() {
         let vc = OrderSummaryVC()
         vc.incomingOrder = cartVCBarcodeItems
         navigationController?.present(vc, animated: true, completion: nil)
-        //navigationController?.pushViewController(vc, animated: true)
     }
     
     // MARK: - Handlers
-    
     func setupView() {
         cartTableView.dataSource = self
         cartTableView.delegate = self

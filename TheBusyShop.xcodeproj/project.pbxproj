@@ -513,6 +513,7 @@
 			baseConfigurationReference = 07BECFA934F95BA1FF011D1B /* Pods-TheBusyShop.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J5987KCXN8;
 				INFOPLIST_FILE = TheBusyShop/Info.plist;
@@ -521,8 +522,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ikhokha.techcheck;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ikhokha.techcheck1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -533,6 +535,7 @@
 			baseConfigurationReference = F42C98CF45D7AC4474A58AAF /* Pods-TheBusyShop.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J5987KCXN8;
 				INFOPLIST_FILE = TheBusyShop/Info.plist;
@@ -541,8 +544,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ikhokha.techcheck;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ikhokha.techcheck1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

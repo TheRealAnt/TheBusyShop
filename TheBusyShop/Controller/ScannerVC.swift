@@ -31,7 +31,8 @@ class ScannerVC: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     
     func setupNavBar() {
         title = "Scan"
-        navigationController?.navigationBar.barTintColor = .yellow
+        navigationController?.navigationBar.barTintColor = Colour.ikYellow
+        navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
         let cartButtonItem = UIBarButtonItem(title: "Cart", style: .plain, target: self, action: #selector(cartButtonPressed))
         self.navigationItem.rightBarButtonItem  = cartButtonItem

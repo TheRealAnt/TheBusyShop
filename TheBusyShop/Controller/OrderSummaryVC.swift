@@ -16,7 +16,8 @@ class OrderSummaryVC: UIViewController {
     }
     
     //MARK:- Properites
-    
+    var callback: (() -> Void)?
+    public var returnToScannerCallback: ()?
     var incomingOrder = [BarcodeMeta]()
     
     var totalItemsInCart = 0
@@ -24,7 +25,7 @@ class OrderSummaryVC: UIViewController {
     
     private lazy var titleView: UIView = {
         let view = UIView(frame: .zero)
-        view.backgroundColor = .yellow
+        view.backgroundColor = Colour.ikYellow
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -82,6 +83,16 @@ class OrderSummaryVC: UIViewController {
         return tv
     }()
     
+    public lazy var activityView: UIActivityIndicatorView = {
+        let view = UIActivityIndicatorView()
+        view.frame = CGRect(x: 0.0, y: 0.0, width: 40.0, height: 40.0)
+        view.center = view.center
+        view.hidesWhenStopped = true
+        view.style = .large
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -90,7 +101,7 @@ class OrderSummaryVC: UIViewController {
         
         itemCountLabel.text = "x\(String(calc.0))"
         totalLabel.text = "Total: R\(String(calc.1))"
-
+        
         setupView()
     }
     
@@ -185,6 +196,13 @@ class OrderSummaryVC: UIViewController {
             itemCountLabel.trailingAnchor.constraint(equalTo: footerView.centerXAnchor, constant: 60)
         ])
     }
+    
+    //    @objc func returnToScannerCallback() {
+    //        if let returnToScannerCallback = self.returnToScannerCallback {
+    //            returnToScannerCallback()
+    //        }
+    //    }
+    
 }
 
 extension OrderSummaryVC: UITableViewDelegate, UITableViewDataSource {

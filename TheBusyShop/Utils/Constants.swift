@@ -12,3 +12,10 @@ let STORAGE = Storage.storage()
 
 let DB_REF = Database.database().reference()
 let REF_USERS = DB_REF.child("product")
+
+//ikhokha colors
+
+struct Colour {
+   static let ikYellow = UIColor(hexString: "#ffc533")
+}
+

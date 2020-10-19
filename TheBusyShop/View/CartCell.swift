@@ -50,8 +50,10 @@ class CartCell: UITableViewCell {
         return label
     }()
     
-    let containerView:UIView = {
+    let containerView: UIView = {
         let view = UIView()
+        view.backgroundColor = Colour.ikYellow
+        view.layer.cornerRadius = 8
         view.translatesAutoresizingMaskIntoConstraints = false
         view.clipsToBounds = true
         return view
@@ -73,30 +75,39 @@ class CartCell: UITableViewCell {
     }
     
     func setupCell() {
-        addSubview(barcodeImageView)
+        
+        addSubview(containerView)
         NSLayoutConstraint.activate([
-            barcodeImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            barcodeImageView.widthAnchor.constraint(equalToConstant: 60),
-            barcodeImageView.heightAnchor.constraint(equalToConstant: 60),
-            barcodeImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            containerView.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
+            containerView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
+            containerView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
+            containerView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
         ])
         
-        addSubview(barcodeDescriptionLabel)
+        containerView.addSubview(barcodeImageView)
         NSLayoutConstraint.activate([
-            barcodeDescriptionLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            barcodeImageView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
+            barcodeImageView.widthAnchor.constraint(equalToConstant: 60),
+            barcodeImageView.heightAnchor.constraint(equalToConstant: 60),
+            barcodeImageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10),
+        ])
+        
+        containerView.addSubview(barcodeDescriptionLabel)
+        NSLayoutConstraint.activate([
+            barcodeDescriptionLabel.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
             barcodeDescriptionLabel.leadingAnchor.constraint(equalTo: barcodeImageView.trailingAnchor, constant: 10),
         ])
         
-        addSubview(barcodeItemCount)
+        containerView.addSubview(barcodeItemCount)
         NSLayoutConstraint.activate([
-            barcodeItemCount.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            barcodeItemCount.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
         ])
         
-        addSubview(barcodePriceLabel)
+        containerView.addSubview(barcodePriceLabel)
         NSLayoutConstraint.activate([
-            barcodePriceLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            barcodePriceLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
-            barcodeItemCount.trailingAnchor.constraint(equalTo: self.centerXAnchor, constant: 60)
+            barcodePriceLabel.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
+            barcodePriceLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10),
+            barcodeItemCount.trailingAnchor.constraint(equalTo: containerView.centerXAnchor, constant: 60)
         ])
     }
     
