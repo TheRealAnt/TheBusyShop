@@ -15,17 +15,6 @@ struct test {
   let price: Double
 }
 
-struct Barcode {
-  let APL883: String
-  let BAN258: String
-  let COC378: String
-  let GPF208: String
-  let ORN750: String
-  let PER478: String
-  let SBR101: String
-  let WML999: String
-}
-
 struct BarcodeMeta: Hashable {
   let description: String
   let image: String

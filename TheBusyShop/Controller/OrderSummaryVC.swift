@@ -16,8 +16,6 @@ class OrderSummaryVC: UIViewController {
     }
     
     //MARK:- Properites
-    var callback: (() -> Void)?
-    public var returnToScannerCallback: ()?
     var incomingOrder = [BarcodeMeta]()
     
     var totalItemsInCart = 0
@@ -42,7 +40,6 @@ class OrderSummaryVC: UIViewController {
     
     private lazy var itemCountLabel: UILabel = {
         let label = UILabel()
-        //label.text = "\(totalItemsInCart)"
         label.font = .preferredFont(for: .body, weight: .bold)
         label.adjustsFontForContentSizeCategory = true
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -51,14 +48,11 @@ class OrderSummaryVC: UIViewController {
     
     private lazy var totalLabel: UILabel = {
         let label = UILabel()
-        //label.text = "R\(totalCostOfOrder)"
         label.font = .preferredFont(for: .body, weight: .bold)
         label.adjustsFontForContentSizeCategory = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
-    
     
     private lazy var checkOutButton: UIButton = {
         let button = UIButton(frame: .zero)
@@ -105,64 +99,12 @@ class OrderSummaryVC: UIViewController {
         setupView()
     }
     
-    @objc func checkoutButtonTapped(_: UIButton) {
-        shareRecieptButtonPressed()
-    }
-    
-    @objc func shareRecieptButtonPressed() {
-        let activityVC = UIActivityViewController(activityItems: [" \(createReciept())"], applicationActivities: nil)
-        present(activityVC, animated: true, completion: nil)
-    }
-    
-    func calculateTotalItemCountAndPrice() -> (Int, Double) {
-        
-        for item in incomingOrder {
-            totalItemsInCart += item.itemCount
-            totalCostOfOrder += item.price
-        }
-        return (totalItemsInCart, totalCostOfOrder)
-    }
-    
-    func createReciept() -> String {
-        
-        let appName = String().getAppName()
-        let dateAndTime = String().getCurrentDateAndTime()
-        
-        var reciept = "Thank you for shopping with \(appName)!\n\n"
-        reciept.append("Receipt for order on \(dateAndTime)\n --Order summary-- \n\n")
-        
-        for item in incomingOrder {
-            reciept.append("x\(item.itemCount)  \(item.description) R\(item.price)\n")
-        }
-        
-        reciept.append("\nYour total cost is R\(totalCostOfOrder)")
-        return reciept
-    }
+    //MARK:- Helper functions
     
     private func setupView() {
-        view.addSubview(titleView)
-        NSLayoutConstraint.activate([
-            titleView.topAnchor.constraint(equalTo: view.topAnchor),
-            titleView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            titleView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            titleView.heightAnchor.constraint(equalToConstant: 80)
-        ])
-        
-        titleView.addSubview(titleLabel)
-        NSLayoutConstraint.activate([
-            titleLabel.centerYAnchor.constraint(equalTo: titleView.centerYAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: titleView.leadingAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: titleView.trailingAnchor)
-        ])
-        
-        view.addSubview(checkOutButton)
-        NSLayoutConstraint.activate([
-            checkOutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            checkOutButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
-            checkOutButton.widthAnchor.constraint(equalToConstant: 200),
-            checkOutButton.heightAnchor.constraint(equalToConstant: 60)
-        ])
-        
+        setupTitleViewConstraints()
+        setupTitleLabelConstraints()
+        setupCheckOutButtonConstraints()
         setupTableView()
     }
     
@@ -184,25 +126,92 @@ class OrderSummaryVC: UIViewController {
             orderSummaryTableView.bottomAnchor.constraint(equalTo: checkOutButton.topAnchor)
         ])
         
+        setupTotalLabelConstraints()
+        setupItemCountLabelConstraints()
+        
+    }
+    
+    func createReciept() -> String {
+        let appName = String().getAppName()
+        let dateAndTime = String().getCurrentDateAndTime()
+        
+        var reciept = "Thank you for shopping with \(appName)!\n\n"
+        reciept.append("Receipt for order on \(dateAndTime)\n --Order summary-- \n\n")
+        
+        for item in incomingOrder {
+            reciept.append("x\(item.itemCount)  \(item.description) R\(item.price)\n")
+        }
+        
+        reciept.append("\nYour total cost is R\(totalCostOfOrder)")
+        return reciept
+    }
+    
+    func calculateTotalItemCountAndPrice() -> (Int, Double) {
+        
+        for item in incomingOrder {
+            totalItemsInCart += item.itemCount
+            totalCostOfOrder += item.price
+        }
+        return (totalItemsInCart, totalCostOfOrder)
+    }
+    
+    //MARK:- Tap gestures
+    
+    @objc func checkoutButtonTapped(_: UIButton) {
+        shareRecieptButtonPressed()
+    }
+    
+    @objc func shareRecieptButtonPressed() {
+        let activityVC = UIActivityViewController(activityItems: [" \(createReciept())"], applicationActivities: nil)
+        present(activityVC, animated: true, completion: nil)
+    }
+    
+    //MARK:- Constraints
+    
+    private func  setupTitleViewConstraints() {
+        view.addSubview(titleView)
+        NSLayoutConstraint.activate([
+            titleView.topAnchor.constraint(equalTo: view.topAnchor),
+            titleView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            titleView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            titleView.heightAnchor.constraint(equalToConstant: 80)
+        ])
+    }
+    
+    private func setupTitleLabelConstraints() {
+        titleView.addSubview(titleLabel)
+        NSLayoutConstraint.activate([
+            titleLabel.centerYAnchor.constraint(equalTo: titleView.centerYAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: titleView.leadingAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: titleView.trailingAnchor)
+        ])
+    }
+    
+    private func setupCheckOutButtonConstraints() {
+        view.addSubview(checkOutButton)
+        NSLayoutConstraint.activate([
+            checkOutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            checkOutButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
+            checkOutButton.widthAnchor.constraint(equalToConstant: 200),
+            checkOutButton.heightAnchor.constraint(equalToConstant: 60)
+        ])
+    }
+    
+    private func setupTotalLabelConstraints() {
         footerView.addSubview(totalLabel)
         NSLayoutConstraint.activate([
             totalLabel.centerYAnchor.constraint(equalTo: footerView.centerYAnchor),
             totalLabel.trailingAnchor.constraint(equalTo: footerView.trailingAnchor, constant: -10),
         ])
-        
+    }
+    
+    private func setupItemCountLabelConstraints() {
         footerView.addSubview(itemCountLabel)
         NSLayoutConstraint.activate([
             itemCountLabel.centerYAnchor.constraint(equalTo: footerView.centerYAnchor),
             itemCountLabel.trailingAnchor.constraint(equalTo: footerView.centerXAnchor, constant: 60)
         ])
     }
-    
-    //    @objc func returnToScannerCallback() {
-    //        if let returnToScannerCallback = self.returnToScannerCallback {
-    //            returnToScannerCallback()
-    //        }
-    //    }
-    
 }
 
 extension OrderSummaryVC: UITableViewDelegate, UITableViewDataSource {

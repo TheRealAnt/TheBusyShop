@@ -12,21 +12,16 @@ import UIKit
 
 class CartVC: UIViewController {
     
+    struct Cell {
+        static let cartCell = "cartCell"
+    }
+    
     // MARK: - Properties
-    var dismissView: (() -> Void)?
     var cartVCBarcodeItems = [BarcodeMeta]()
     var cartVCBarcodeItemsPrices = [BarcodeMeta]()
     
     var barcode: BarcodeMeta? {
         didSet{ setupFruitImage() }
-    }
-    
-    //  private var codes = [BarcodeMeta]() {
-    //    didSet { cartTableView.reloadData() }
-    //  }
-    
-    struct Cell {
-        static let cartCell = "cartCell"
     }
     
     let cartTableView: UITableView = {

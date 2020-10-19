@@ -9,20 +9,19 @@
 import Firebase
 
 public struct BarcodeService {
-  static let shared = BarcodeService()
-  
-  func fetchBarcode(completion: @escaping([BarcodeMeta]) -> Void) {
-    //guard let uid = Auth.auth().currentUser?.uid else { return }
+    static let shared = BarcodeService()
     
-    var codes = [BarcodeMeta]()
-    
-    DB_REF.observe(.childAdded) { (snapshot) in
-      guard let dictionary = snapshot.value as? [String: AnyObject] else { return }
-      let barcodeId = snapshot.key
-      let barcode = BarcodeMeta(uid: barcodeId, itemCount: 0, dictionary: dictionary)
-      
-      codes.append(barcode)
-      completion(codes)
+    func fetchBarcode(completion: @escaping([BarcodeMeta]) -> Void) {
+        
+        var codes = [BarcodeMeta]()
+        
+        DB_REF.observe(.childAdded) { (snapshot) in
+            guard let dictionary = snapshot.value as? [String: AnyObject] else { return }
+            let barcodeId = snapshot.key
+            let barcode = BarcodeMeta(uid: barcodeId, itemCount: 0, dictionary: dictionary)
+            
+            codes.append(barcode)
+            completion(codes)
+        }
     }
-  }
 }

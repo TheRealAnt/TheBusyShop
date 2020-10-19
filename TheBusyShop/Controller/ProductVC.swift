@@ -19,7 +19,7 @@ class ProductVC: UIViewController {
         didSet{ setupFruitImage() }
     }
     
-    let fruitImageView:UIImageView = {
+    private lazy var fruitImageView:UIImageView = {
         let img = UIImageView(frame: .zero)
         img.backgroundColor = .lightGray
         img.contentMode = .scaleAspectFill
@@ -29,7 +29,7 @@ class ProductVC: UIViewController {
         return img
     }()
     
-    let barcodeDescriptionLabel:UILabel = {
+    private lazy var barcodeDescriptionLabel:UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 20)
         label.textAlignment = .center
@@ -38,7 +38,7 @@ class ProductVC: UIViewController {
         return label
     }()
     
-    let barcodePriceLabel:UILabel = {
+    private lazy var barcodePriceLabel:UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 20)
         label.textAlignment = .center

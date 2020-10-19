@@ -76,6 +76,8 @@ class CartCell: UITableViewCell {
     
     func setupCell() {
         
+        self.selectionStyle = .none
+        
         addSubview(containerView)
         NSLayoutConstraint.activate([
             containerView.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),

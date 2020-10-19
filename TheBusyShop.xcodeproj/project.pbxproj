@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2B022421252EFBF100DD86FF /* BarcodeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B022420252EFBF100DD86FF /* BarcodeService.swift */; };
-		2B031ACD2533403B00CA7D82 /* Code.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B031ACC2533403B00CA7D82 /* Code.swift */; };
 		2B031AD1253487F000CA7D82 /* ProductVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B031AD0253487F000CA7D82 /* ProductVC.swift */; };
 		2B031AD32534A1A400CA7D82 /* CheckOutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B031AD22534A1A400CA7D82 /* CheckOutVC.swift */; };
 		2B031AD52534A22E00CA7D82 /* OrderSummaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B031AD42534A22E00CA7D82 /* OrderSummaryVC.swift */; };
@@ -17,7 +16,6 @@
 		2B048FC52523B5B10006FCC6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B048FC42523B5B10006FCC6 /* Assets.xcassets */; };
 		2B048FC82523B5B10006FCC6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B048FC62523B5B10006FCC6 /* LaunchScreen.storyboard */; };
 		2B048FD32523B5B20006FCC6 /* TheBusyShopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B048FD22523B5B20006FCC6 /* TheBusyShopTests.swift */; };
-		2B048FE72523BE4E0006FCC6 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B048FE62523BE4E0006FCC6 /* Image.swift */; };
 		2B048FE92523C4C50006FCC6 /* CartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B048FE82523C4C50006FCC6 /* CartVC.swift */; };
 		2B0F0BB2252F0A5600211429 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0F0BB1252F0A5600211429 /* Constants.swift */; };
 		2B0F0BB4252F148500211429 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0F0BB3252F148500211429 /* AuthService.swift */; };
@@ -43,7 +41,6 @@
 		07BECFA934F95BA1FF011D1B /* Pods-TheBusyShop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheBusyShop.debug.xcconfig"; path = "Target Support Files/Pods-TheBusyShop/Pods-TheBusyShop.debug.xcconfig"; sourceTree = "<group>"; };
 		2B02241D252DEAAA00DD86FF /* CartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCell.swift; sourceTree = "<group>"; };
 		2B022420252EFBF100DD86FF /* BarcodeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeService.swift; sourceTree = "<group>"; };
-		2B031ACC2533403B00CA7D82 /* Code.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Code.swift; sourceTree = "<group>"; };
 		2B031AD0253487F000CA7D82 /* ProductVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductVC.swift; sourceTree = "<group>"; };
 		2B031AD22534A1A400CA7D82 /* CheckOutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckOutVC.swift; sourceTree = "<group>"; };
 		2B031AD42534A22E00CA7D82 /* OrderSummaryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSummaryVC.swift; sourceTree = "<group>"; };
@@ -56,7 +53,6 @@
 		2B048FCE2523B5B20006FCC6 /* TheBusyShopTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TheBusyShopTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B048FD22523B5B20006FCC6 /* TheBusyShopTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheBusyShopTests.swift; sourceTree = "<group>"; };
 		2B048FD42523B5B20006FCC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2B048FE62523BE4E0006FCC6 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		2B048FE82523C4C50006FCC6 /* CartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartVC.swift; sourceTree = "<group>"; };
 		2B0F0BB1252F0A5600211429 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2B0F0BB3252F148500211429 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
@@ -155,9 +151,7 @@
 		2B048FDD2523B69B0006FCC6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				2B048FE62523BE4E0006FCC6 /* Image.swift */,
 				2BB508BC2528A7D3009CDDE7 /* Barcodes.swift */,
-				2B031ACC2533403B00CA7D82 /* Code.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -345,10 +339,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B0F0BB2252F0A5600211429 /* Constants.swift in Sources */,
-				2B031ACD2533403B00CA7D82 /* Code.swift in Sources */,
 				2BF630CE25360F6300A792C4 /* CartCell.swift in Sources */,
 				2B0F0BB4252F148500211429 /* AuthService.swift in Sources */,
-				2B048FE72523BE4E0006FCC6 /* Image.swift in Sources */,
 				2B031AD32534A1A400CA7D82 /* CheckOutVC.swift in Sources */,
 				2B048FE92523C4C50006FCC6 /* CartVC.swift in Sources */,
 				2B031AD52534A22E00CA7D82 /* OrderSummaryVC.swift in Sources */,

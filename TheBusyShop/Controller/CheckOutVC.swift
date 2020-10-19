@@ -20,7 +20,7 @@ class CheckOutVC: UIViewController {
     var checkoutOrder = [BarcodeMeta]()
     var updatedCheckoutOrder = [Any]()
     
-    private let checkoutTableView: UITableView = {
+    private lazy var checkoutTableView: UITableView = {
         let tv = UITableView()
         tv.translatesAutoresizingMaskIntoConstraints = false
         return tv
@@ -36,12 +36,12 @@ class CheckOutVC: UIViewController {
         self.navigationItem.rightBarButtonItem  = shareRecieptButtonItem
     }
     
-    @objc func shareRecieptButtonPressed() {
+    @objc private func shareRecieptButtonPressed() {
         let activityVC = UIActivityViewController(activityItems: [" \(createReciept())"], applicationActivities: nil)
         present(activityVC, animated: true, completion: nil)
     }
     
-    func createReciept() -> String {
+    private func createReciept() -> String {
         
         let appName = String().getAppName()
         let dateAndTime = String().getCurrentDateAndTime()
@@ -59,7 +59,7 @@ class CheckOutVC: UIViewController {
         return reciept
     }
     
-    func setupView() {
+    private func setupView() {
         
         checkoutTableView.dataSource = self
         checkoutTableView.delegate = self

@@ -9,13 +9,18 @@
 import Firebase
 
 let STORAGE = Storage.storage()
-
 let DB_REF = Database.database().reference()
 let REF_USERS = DB_REF.child("product")
 
-//ikhokha colors
+//MARK:- iKhokha colors
 
 struct Colour {
    static let ikYellow = UIColor(hexString: "#ffc533")
 }
 
+//MARK:- Images
+
+struct Image {
+    static let Scan = UIImage(named: "scan") ?? UIImage()
+    static let Cart = UIImage(named: "cart") ?? UIImage()
+}
